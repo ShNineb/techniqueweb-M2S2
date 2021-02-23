@@ -23,7 +23,7 @@ class Geonames(db.Model):
     feature_class=db.Column(db.String)
     feature_code=db.Column(db.String)
     country_code=db.Column(db.String)
-    cc2=db.Column(db.Char(2))
+    cc2=db.Column(db.String)
     admin1_code=db.Column(db.Integer)
     admin2_code=db.Column(db.Integer)
     admin3_code=db.Column(db.Integer)
@@ -32,7 +32,7 @@ class Geonames(db.Model):
     elevation=db.Column(db.Integer)
     dem=db.Column(db.Integer)
     timezone=db.Column(db.String)
-    modification=db.Column(db.String)
+    modification=db.Column(db.Date)
     modified_by=db.Column(db.String)
 
 
