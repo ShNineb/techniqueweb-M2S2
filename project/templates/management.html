@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Welcome, {{ name }}!
+</h1>
+<div class="btn-group">
+	<button>Add</button>
+	<button>Edit</button>
+	<button>Delete</button>
+	<br/>
+	<!-- <form action="/management" method="POST">
+	<input type="int" name="geoid" placeholder="input id"/><button>Search</button>
+	</form> -->
+</div>
+{% endblock %}
