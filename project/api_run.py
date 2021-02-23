@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resources/db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SERVER_NAME'] = 'digidata.api.localhost:80'
-app.config['SERVER_NAME'] = 'localhost:5000'
+app.config['SERVER_NAME'] = 'digidata.api.localhost:80'
+# app.config['SERVER_NAME'] = 'localhost:5000'
 
 
 resources.db.init_app(app)
@@ -32,4 +32,4 @@ app.register_blueprint(index_blueprint)
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=True,host='0.0.0.0')
