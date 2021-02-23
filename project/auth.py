@@ -33,13 +33,5 @@ def login_post():
     login_user(user, remember=remember)
     return redirect(url_for('main.management'))
 
-# @auth.route('/management', methods=['POST'])
-# def search():
-#     keyword = request.form.get('geoid')
-#     geoid = Geonames.query.filter_by(geoid=keyword).first()
-#     # if geoid:
-#     print(f"id is : {geoid}")
-#     return redirect(url_for('res.html',items=geoid))
-
 
 

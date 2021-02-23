@@ -13,14 +13,6 @@ def index():
 def management():
     return render_template('management.html', name=current_user.name)
 
-# # Todo
-# @main.route('/management/add')
-
-
-# @main.route('/management/edit')
-
-
-# @main.route('/management/delete')
 
 
 
