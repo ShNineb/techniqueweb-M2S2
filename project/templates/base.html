@@ -21,11 +21,11 @@
 
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
+                            <a href="{{ url_for('index.index_page') }}" class="navbar-item">
                                 Home
                             </a>
                             {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.management') }}" class="navbar-item">
+                            <a href="{{ url_for('index.management') }}" class="navbar-item">
                                 Management
                             </a>
                             {% endif %}
