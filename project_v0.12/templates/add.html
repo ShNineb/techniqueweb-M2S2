@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Add a new geopoint
+</h1>
+<div>
+                <form action="/add" method="POST">
+                    <label for="geonameid">geonameid :</label>
+                    <input type="text" name="geonameid" id="geonameid" required>
+                    <br>
+                    <label for="name">name :</label>
+                    <input type="text" name="name" id="name" required>
+                    <br>
+                    <label for="asciiname">asciiname :</label>
+                    <input type="text" name="asciiname" id="asciiname">
+                    <br>
+                    <label for="alternatenames">alternatenames :</label>
+                    <input type="text" name="alternatenames" id="alternatenames">
+                    <br>
+                    <label for="latitude">latitude :</label>
+                    <input type="text" name="latitude" id="latitude">
+                    <br>
+                    <label for="longitude">longitude :</label>
+                    <input type="text" name="longitude" id="longitude">
+                    <br>
+                    <label for="feature_class">feature_class :</label>
+                    <input type="text" name="feature_class" id="feature_class">
+                    <br>
+                    <label for="feature_code">feature_code :</label>
+                    <input type="text" name="feature_code" id="feature_code">
+                    <br>
+                    <label for="country_code">country_code :</label>
+                    <input type="text" name="country_code" id="country_code">
+                    <br>
+                    <label for="cc2">cc2 :</label>
+                    <input type="text" name="cc2" id="cc2">
+                    <br>
+                    <label for="admin1_code">admin1_code :</label>
+                    <input type="text" name="admin1_code" id="admin1_code">
+                    <br>
+                    <label for="admin2_code">admin2_code :</label>
+                    <input type="text" name="admin2_code" id="admin2_code">
+                    <br>
+                    <label for="admin3_code">admin3_code :</label>
+                    <input type="text" name="admin3_code" id="admin3_code">
+                    <br>
+                    <label for="admin4_code">admin4_code :</label>
+                    <input type="text" name="admin4_code" id="admin4_code">
+                    <br>
+                    <label for="population">population :</label>
+                    <input type="text" name="population" id="population">
+                    <br>
+                    <label for="elevation">elevation :</label>
+                    <input type="text" name="elevation" id="elevation">
+                    <br>
+                    <label for="dem">dem :</label>
+                    <input type="text" name="dem" id="dem">
+                    <br>
+                    <label for="timezone">timezone :</label>
+                    <input type="text" name="timezone" id="timezone">
+                    <br>
+                    <!--
+                    <label for="modification_date">modification_date :</label>
+                    <input type="date" name="modification_date" id="modification_date">
+                    <br>
+                	-->
+                    <label for="modified_by">modified_by :</label>
+                    <input type="text" name="modified_by" id="modified_by">
+                    <br>
+                    
+                    <input type="submit" value="Add Geo Item">
+                </form>
+
+
+ </div>
+
+
+
+{% endblock %}
