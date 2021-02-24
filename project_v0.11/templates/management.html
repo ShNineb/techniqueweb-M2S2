@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  <!-- Welcome, {{ name }}! -->
+  Format of data
+</h1>
+<table>
+		<tr>
+			<td>geonameid</td>
+			<td>name</td>
+			<td>asciiname</td>
+			<td>alternatenames</td>
+			<td>latitude</td>
+			<td>longitude</td>
+			<td>feature_class</td>
+			<td>feature_code</td>
+			<td>country_code</td>
+			<td>cc2</td>
+			<td>admin1_code</td>
+			<td>admin2_code</td>
+			<td>admin3_code</td>
+			<td>admin4_code</td>
+			<td>population</td>
+			<td>elevation</td>
+			<td>dem</td>
+			<td>timezone</td>
+			<td>modification</td>
+			<td>modified_by</td>
+		</tr>
+		<tr>
+			<td>2659086</td>
+			<td>Col de Recon</td>
+			<td>Col de Recon</td>
+			<td>Rapenaz  Col de,Recon  Col de</td>
+			<td>46.30352</td>
+			<td>6.82838</td>
+			<td>T</td>
+			<td>PASS</td>
+			<td>FR</td>
+			<td>CH</td>
+			<td>84</td>
+			<td>74</td>
+			<td>744</td>
+			<td>74058</td>
+			<td>0</td>
+			<td></td>
+			<td>1733</td>
+			<td>Europe/Paris</td>
+			<td>2019-02-15</td>
+			<td></td>
+		</tr>
+	</table>
+<div class="btn-group">
+<!-- 	<button>Add</button>
+	<button>Edit/Delete</button> -->
+	<br/>
+	<form action="/management" method="POST">
+	<input type="int" name="geoid" placeholder="input id"/>
+	<input type="submit" value="Search">
+	</form>
+</div>
+{% endblock %}
