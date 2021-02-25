@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  <!-- Welcome, {{ name }}! -->
+  Geopoints
+</h1>
+<table>
+        <tr>
+            <th>geonameid</th>
+            <th>name</th>
+            <th>asciiname</th>
+            <th>alternatenames</th>
+            <th>latitude</th>
+            <th>longitude</th>
+            <th>feature class</th>
+            <th>feature code</th>
+            <th>country code</th>
+            <th>cc2</th>
+            <th>admin1 code</th>
+            <th>admin2 code</th>
+            <th>admin3 code</th>
+            <th>admin4 code</th>
+            <th>population</th>
+            <th>elevation</th>
+            <th>dem</th>
+            <th>timezone</th>
+            <th>modification date</th>
+            <th>modified by</th>
+        </tr>
+        {% for geo in geos %}
+            <tr>
+                <td>{{ geo.geonameid }}</td>
+                <td>{{ geo.name }}</td>
+                <td>{{ geo.asciiname }}</td>
+                <td>{{ geo.alternatenames }}</td>
+                <td>{{ geo.latitude }}</td>
+                <td>{{ geo.longitude }}</td>
+                <td>{{ geo.feature_class }}</td>
+                <td>{{ geo.feature_code }}</td>
+                <td>{{ geo.country_code }}</td>
+                <td>{{ geo.cc2 }}</td>
+                <td>{{ geo.admin1_code }}</td>
+                <td>{{ geo.admin2_code }}</td>
+                <td>{{ geo.admin3_code }}</td>
+                <td>{{ geo.admin4_code }}</td>
+                <td>{{ geo.population }}</td>
+                <td>{{ geo.elevation }}</td>
+                <td>{{ geo.dem }}</td>
+                <td>{{ geo.timezone }}</td>
+                <td>{{ geo.modification }}</td>
+                <td>{{ geo.modified_by }}</td>
+                <td>
+                    <a href="/delete/{{geo.geonameid}}"><b><em>Delete</em></b></a>
+                    <br>
+                    <a href="/update/{{geo.geonameid}}"><b><em>Update</em></b></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+		
+<div class="btn-group">
+<!-- 	<button>Add</button>
+	<button>Edit/Delete</button> -->
+	<br/>
+	<ul class="nav navbar-nav">
+        <li><a href="/add">Add Geopoint</a></li> 
+    </ul>
+	<form action="/management" method="POST">
+	<input type="int" name="geoid" placeholder="input id"/>
+	<input type="submit" value="Search">
+	</form>
+</div>
+{% endblock %}
