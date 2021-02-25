@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  <!-- Welcome, {{ name }}! -->
+  Geopoints
+</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+ 
+            <div class="jumbotron p-3">
+ 
+                <h2>Manage <b>geoNames </b>  <button type="button"  class="btn btn-success float-right">
+                    <a href="/add" class="btn btn-success float-right">
+                Add New GeoNames</a></button> </h2>
+
+		
+                <div class="btn-group">
+                    <br/> 
+                        <form action="/management" method="POST">
+                        <input type="int" class="btn btn-primary" name="geoid" placeholder="input id"/>
+                        <input type="submit" class="btn btn-primary" value="Search">
+                        </form>
+                        <br/>
+                    </div>
+
+                {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                {% for message in messages %}
+
+                <div class="alert alert-success alert-dismissable" role="alert">
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+
+                        <span aria-hidden="true">x</span>
+
+                    </button>
+
+                {{message}}
+
+                </div>
+
+                {% endfor %}
+
+                {% endif %}
+                {% endwith %}
+
+                <table class="table table-hover table-dark">
+
+        <tr>
+            <th>geonameid</th>
+            <th>name</th>
+            <th>asciiname</th>
+            <th>alternatenames</th>
+            <th>latitude</th>
+            <th>longitude</th>
+
+            <th>country code</th>
+            <!--<th>cc2</th>
+
+            <th>feature class</th>
+            <th>feature code</th>
+
+            <th>admin1 code</th>
+            <th>admin2 code</th>
+            <th>admin3 code</th>
+            <th>admin4 code</th>
+            <th>population</th>
+            <th>elevation</th>
+            <th>dem</th>
+            <th>timezone</th> -->
+            <th>modification date</th>
+            <th>modified by</th>
+        </tr>
+        {% for geo in geos %}
+            <tr>
+                <td>{{ geo.geonameid }}</td>
+                <td>{{ geo.name }}</td>
+                <td>{{ geo.asciiname }}</td>
+                <td>{{ geo.alternatenames }}</td>
+                <td>{{ geo.latitude }}</td>
+                <td>{{ geo.longitude }}</td>
+
+                <td>{{ geo.country_code }}</td>
+               <!-- <td>{{ geo.cc2 }}</td>
+
+                <td>{{ geo.feature_class }}</td>
+                <td>{{ geo.feature_code }}</td>
+
+                <td>{{ geo.admin1_code }}</td>
+                <td>{{ geo.admin2_code }}</td>
+                <td>{{ geo.admin3_code }}</td>
+                <td>{{ geo.admin4_code }}</td>
+                <td>{{ geo.population }}</td>
+                <td>{{ geo.elevation }}</td>
+                <td>{{ geo.dem }}</td>
+                <td>{{ geo.timezone }}</td>-->
+                <td>{{ geo.modification }}</td>
+                <td>{{ geo.modified_by }}</td>
+                <td>
+                    <td>
+                        <a href="/update/{{geo.geonameid}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{geo.geonameid}}">Edit</a>
+                        <a href="/delete/{{geo.geonameid}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sur to Delete ?')">Delete</a>
+                    </td>
+
+                </td>
+            </tr>
+
+
+<!-- Modal Edit Employee-->
+<!-- Conflit bootstap css modal-action to change-->
+<div id="modaledit{{geo.geonameid}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h4 class="modal-title">Update New GeoNames</h4>
+            </div>
+  
+          <div class="modal-body">
+             <form action="/management"  method="POST"> 
+                <div class="form-group">
+  
+                   <label for="geonameid">geonameid :</label>
+                   <!--<input type="hidden"  name="id" value="{{geo.geonameid}}"> -->
+                   <input type="text" class="form-control" name="geonameid" id="geonameid" value="{{geo.geonameid}}">
+  
+                </div>
+                <div class="form-group">
+                    <label for="name">name :</label>
+                    <input type="text" name="name" id="name" value="{{geo.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="asciiname">asciiname :</label>
+                    <input type="text" name="asciiname" id="asciiname" value="{{geo.asciiname}}">
+                </div>
+                <div class="form-group">
+                    <label for="alternatenames">alternatenames :</label>
+                    <input type="text" name="alternatenames" id="alternatenames" value="{{geo.alternatenames}}">
+                </div>
+                <div class="form-group">
+                    <label for="latitude">latitude :</label>
+                    <input type="text" name="latitude" id="latitude" value="{{geo.latitude}}">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">longitude :</label>
+                    <input type="text" name="longitude" id="longitude" value="{{geo.longitude}}">
+                </div>
+                <div class="form-group">
+                    <label for="feature_class">feature_class :</label>
+                    <input type="text" name="feature_class" id="feature_class" value="{{geo.feature_class}}">
+                </div>
+                <div class="form-group">
+                    <label for="feature_code">feature_code :</label>
+                    <input type="text" name="feature_code" id="feature_code" value="{{geo.feature_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="country_code">country_code :</label>
+                    <input type="text" name="country_code" id="country_code" value="{{geo.country_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="cc2">cc2 :</label>
+                    <input type="text" name="cc2" id="cc2" value="{{geo.cc2}}">
+                </div>
+                <div class="form-group">
+                    <label for="admin1_code">admin1_code :</label>
+                    <input type="text" name="admin1_code" id="admin1_code" value="{{geo.admin1_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="admin2_code">admin2_code :</label>
+                    <input type="text" name="admin2_code" id="admin2_code" value="{{geo.admin2_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="admin3_code">admin3_code :</label>
+                    <input type="text" name="admin3_code" id="admin3_code" value="{{geo.admin3_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="admin4_code">admin4_code :</label>
+                    <input type="text" name="admin4_code" id="admin4_code" value="{{geo.admin4_code}}">
+                </div>
+                <div class="form-group">
+                    <label for="population">population :</label>
+                    <input type="text" name="population" id="population" value="{{geo.population}}">
+                </div>
+                <div class="form-group">
+                    <label for="elevation">elevation :</label>
+                    <input type="text" name="elevation" id="elevation" value="{{geo.elevation}}">
+                </div>
+                <div class="form-group">
+                    <label for="dem">dem :</label>
+                    <input type="text" name="dem" id="dem" value="{{geo.dem}}">
+                </div>
+                <div class="form-group">
+                    <label for="timezone">timezone :</label>
+                    <input type="text" name="timezone" id="timezone" value="{{geo.timezone}}">
+                </div>
+                <!--
+                <label for="modification_date">modification_date :</label>
+                <input type="date" name="modification_date" id="modification_date" value="{{geo.modification_date}}">
+                <br>
+                -->
+                <div class="form-group">
+                    <label for="modified_by">modified_by :</label>
+                    <input type="text" name="modified_by" id="modified_by" value="{{geo.modified_by}}">
+                </div>
+
+                <div class="form-group">  
+                     <button class="btn btn-primary" type="submit">Update</button>                    
+                </div>
+             </form>
+            </div>
+
+          <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+</div>
+
+</div>
+
+</div>
+        {% endfor %}
+
+        </table>
+         </div>
+                
+<!-- Modal Add GeoName-->
+<!-- Conflit bootstap css modal action to change-->
+
+<div id="mymodal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <h4 class="modal-title">Add GeoName</h4>
+        </div>
+        <div class="modal-body">
+            <form action="/management" method="POST">
+
+
+                <div class="form-group">
+                   <label for="geonameid">geonameid :</label>
+                   <input type="text" class="form-control" name="geonameid" id="geonameid" required="1">
+                </div>
+  
+                 <div class="form-group">
+                   <label for="name">name :</label>
+                   <input type="text" class="form-control" name="name" id="name" required="1">
+                </div>
+  
+                 <div class="form-group">
+                   <label for="asciiname">asciiname :</label>
+                   <input type="text" class="form-control" name="asciiname" id="asciiname" required="1">
+                 </div>
+
+                 <div class="form-group">
+                    <label for="alternatenames">alternatenames :</label>
+                    <input type="text" class="form-control" name="alternatenames" id="alternatenames" required="1"> 
+                </div>
+ 
+                <div class="form-group">
+                    <label for="latitude">latitude :</label>
+                    <input type="text" class="form-control" name="latitude" id="latitude" required="1">
+                </div>
+ 
+                <div class="form-group">
+                    <label for="longitude">longitude :</label>
+                    <input type="text" class="form-control" name="longitude" id="longitude" required="1">
+                </div>
+ 
+                <div class="form-group">
+                    <label for="feature_class">feature_class :</label>
+                    <input type="text" class="form-control" name="feature_class" id="feature_class" required="1">
+                </div>
+ 
+                <div class="form-group">
+                    <label for="feature_code">feature_code :</label>
+                    <input type="text" class="form-control" name="feature_code" id="feature_code" required="1">
+                </div>
+ 
+
+                <div class="form-group">
+                    <label for="country_code">country_code :</label>
+                    <input type="text" class="form-control" name="country_code" id="country_code" required="1">
+                </div>
+ 
+                <div class="form-group">
+                    <label for="cc2">cc2 :</label>
+                    <input type="text" class="form-control" name="cc2" id="cc2" required="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="admin1_code">admin1_code :</label>
+                    <input type="text" class="form-control" name="admin1_code" id="admin1_code" required="1">   
+                </div>
+
+                <div class="form-group">
+                    <label for="admin2_code">admin2_code :</label>
+                    <input type="text" class="form-control" name="admin2_code" id="admin2_code" required="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="admin3_code">admin3_code :</label>
+                    <input type="text" class="form-control" name="admin3_code" id="admin3_code" required="1"> 
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="admin4_code">admin4_code :</label>
+                    <input type="text" class="form-control" name="admin4_code" id="admin4_code" required="1">   
+                </div>
+
+                <div class="form-group">
+                    <label for="population">population :</label>
+                    <input type="text" class="form-control" name="population" id="population" required="1">    
+                </div>
+
+
+                <div class="form-group">
+                    <label for="elevation">elevation :</label>
+                    <input type="text" class="form-control" name="elevation" id="elevation" required="1">  
+                </div>
+
+                <div class="form-group">
+                    <label for="dem">dem :</label>
+                    <input type="text" class="form-control" name="dem" id="dem" required="1">    
+                </div>
+
+                <div class="form-group">
+                    <label for="timezone">timezone :</label>
+                    <input type="text" class="form-control" name="timezone" id="timezone" required="1">
+                </div>
+
+                 <!--
+                 <label for="modification_date">modification_date :</label>
+                 <input type="date" name="modification_date" id="modification_date">
+                 <br>
+                 -->
+                 <div class="form-group">
+                    <label for="modified_by">modified_by :</label>
+                    <input type="text" class="form-control" name="modified_by" id="modified_by" required="1">  
+                </div>
+ 
+                <div class="form-group">
+                   <button class="btn btn-primary" type="submit">Add GeoName</button>
+                </div>
+ 
+             </form>
+          </div>
+        <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+ 
+</div>
+</div>
+                  
+
+{% endblock %}

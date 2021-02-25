@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Add a new geopoint 
+</h1>
+<!-- Add GeoName-->
+<div class="modal-body">
+    <form action="/add" method="POST">
+
+
+        <div class="form-group">
+            <label for="geonameid">geonameid :</label>
+            <input type="text" class="form-control" name="geonameid" id="geonameid" required="1">
+        </div>
+
+          <div class="form-group">
+            <label for="name">name :</label>
+            <input type="text" class="form-control" name="name" id="name" required="1">
+        </div>
+
+          <div class="form-group">
+            <label for="asciiname">asciiname :</label>
+            <input type="text" class="form-control" name="asciiname" id="asciiname" required="1">
+          </div>
+
+          <div class="form-group">
+            <label for="alternatenames">alternatenames :</label>
+            <input type="text" class="form-control" name="alternatenames" id="alternatenames" required="1"> 
+        </div>
+
+        <div class="form-group">
+            <label for="latitude">latitude :</label>
+            <input type="text" class="form-control" name="latitude" id="latitude" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="longitude">longitude :</label>
+            <input type="text" class="form-control" name="longitude" id="longitude" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="feature_class">feature_class :</label>
+            <input type="text" class="form-control" name="feature_class" id="feature_class" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="feature_code">feature_code :</label>
+            <input type="text" class="form-control" name="feature_code" id="feature_code" required="1">
+        </div>
+
+
+        <div class="form-group">
+            <label for="country_code">country_code :</label>
+            <input type="text" class="form-control" name="country_code" id="country_code" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="cc2">cc2 :</label>
+            <input type="text" class="form-control" name="cc2" id="cc2" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="admin1_code">admin1_code :</label>
+            <input type="text" class="form-control" name="admin1_code" id="admin1_code" required="1">   
+        </div>
+
+        <div class="form-group">
+            <label for="admin2_code">admin2_code :</label>
+            <input type="text" class="form-control" name="admin2_code" id="admin2_code" required="1">
+        </div>
+
+        <div class="form-group">
+            <label for="admin3_code">admin3_code :</label>
+            <input type="text" class="form-control" name="admin3_code" id="admin3_code" required="1"> 
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="admin4_code">admin4_code :</label>
+            <input type="text" class="form-control" name="admin4_code" id="admin4_code" required="1">   
+        </div>
+
+        <div class="form-group">
+            <label for="population">population :</label>
+            <input type="text" class="form-control" name="population" id="population" required="1">    
+        </div>
+
+
+        <div class="form-group">
+            <label for="elevation">elevation :</label>
+            <input type="text" class="form-control" name="elevation" id="elevation" required="1">  
+        </div>
+
+        <div class="form-group">
+            <label for="dem">dem :</label>
+            <input type="text" class="form-control" name="dem" id="dem" required="1">    
+        </div>
+
+        <div class="form-group">
+            <label for="timezone">timezone :</label>
+            <input type="text" class="form-control" name="timezone" id="timezone" required="1">
+        </div>
+
+          
+          <label for="modification_date">modification_date :</label>
+          <input type="date" name="modification_date" id="modification_date">
+          <br>
+          
+          <!-- <div class="form-group">
+            <label for="modified_by">modified_by :</label>
+            <input type="text" class="form-control" name="modified_by" id="modified_by" required="1">  
+        </div> -->
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Add GeoName</button>
+        </div>
+
+      </form>
+  </div>
+
+
+{% endblock %}

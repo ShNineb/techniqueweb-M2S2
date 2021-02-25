@@ -29,9 +29,10 @@ def management():
 		return render_template('management.html', name=current_user.name)
 
 
-@index.route('/add')
+@index.route('/add/<int:id>',methods=['GET','POST'])
 @login_required
 def add():
+	
     return render_template('add.html', name=current_user.name)
 
 
