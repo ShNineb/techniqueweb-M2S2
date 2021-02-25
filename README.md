@@ -9,3 +9,8 @@ export FLASK_DEBUG=1
 
 flask run
 ```
+
+
+### Version 0.012
+--- command line ---
+```python api_run.py```
